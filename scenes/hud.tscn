@@ -1,0 +1,154 @@
+[gd_scene load_steps=7 format=3 uid="uid://l607a5101g5e"]
+
+[ext_resource type="LabelSettings" uid="uid://c57087kb6t0iv" path="res://assets/fonts/LG_white_48.tres" id="1_l54p3"]
+[ext_resource type="Script" uid="uid://b11sovjo40lrp" path="res://scripts/hud.gd" id="1_mrrsm"]
+[ext_resource type="Texture2D" uid="uid://cckythiqp2grj" path="res://assets/items/pixel heart 2.png" id="2_3gpbv"]
+[ext_resource type="Texture2D" uid="uid://cwyrf17kysklr" path="res://assets/items/IconButton_Large_Blue_Circle.png" id="4_7dfob"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dc5qb"]
+font_size = 32
+font_color = Color(0.00351917, 0.00351917, 0.00351917, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ww1ca"]
+font_size = 32
+font_color = Color(0.000113828, 0.000113828, 0.000113828, 1)
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mrrsm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 631.0
+color = Color(1, 0.615686, 0.290196, 0.482353)
+
+[node name="VBLevelComplete" type="VBoxContainer" parent="ColorRect"]
+visible = false
+layout_mode = 0
+offset_left = 358.0
+offset_top = 280.0
+offset_right = 850.0
+offset_bottom = 374.0
+
+[node name="Label" type="Label" parent="ColorRect/VBLevelComplete"]
+layout_mode = 2
+text = "           LEVEL COMPLETE"
+label_settings = SubResource("LabelSettings_dc5qb")
+
+[node name="Label2" type="Label" parent="ColorRect/VBLevelComplete"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PRESS JUMP FOR NEXT LEVEL"
+label_settings = SubResource("LabelSettings_dc5qb")
+
+[node name="Label3" type="Label" parent="ColorRect/VBLevelComplete"]
+layout_mode = 2
+text = "PRESS FIRE TO EXIT GAME"
+
+[node name="VBGameOver" type="VBoxContainer" parent="ColorRect"]
+visible = false
+layout_mode = 0
+offset_left = 375.0
+offset_top = 281.0
+offset_right = 819.0
+offset_bottom = 375.0
+
+[node name="Label" type="Label" parent="ColorRect/VBGameOver"]
+layout_mode = 2
+text = "              GAME OVER"
+label_settings = SubResource("LabelSettings_ww1ca")
+
+[node name="Label2" type="Label" parent="ColorRect/VBGameOver"]
+layout_mode = 2
+text = "PRESS JUMP  FOR MAIN MENU"
+label_settings = SubResource("LabelSettings_ww1ca")
+
+[node name="Label3" type="Label" parent="ColorRect/VBGameOver"]
+layout_mode = 2
+text = "PRESS FIRE TO EXIT GAME"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0000"
+label_settings = ExtResource("1_l54p3")
+
+[node name="HBHearts" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Heart1" type="TextureRect" parent="MarginContainer/HBHearts"]
+layout_mode = 2
+texture = ExtResource("2_3gpbv")
+stretch_mode = 4
+
+[node name="Heart2" type="TextureRect" parent="MarginContainer/HBHearts"]
+layout_mode = 2
+texture = ExtResource("2_3gpbv")
+stretch_mode = 4
+
+[node name="Heart3" type="TextureRect" parent="MarginContainer/HBHearts"]
+layout_mode = 2
+texture = ExtResource("2_3gpbv")
+stretch_mode = 4
+
+[node name="Heart4" type="TextureRect" parent="MarginContainer/HBHearts"]
+layout_mode = 2
+texture = ExtResource("2_3gpbv")
+stretch_mode = 4
+
+[node name="Heart5" type="TextureRect" parent="MarginContainer/HBHearts"]
+layout_mode = 2
+texture = ExtResource("2_3gpbv")
+stretch_mode = 4
+
+[node name="ButtonLeft" type="TouchScreenButton" parent="."]
+z_index = 1
+position = Vector2(40, 494)
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_7dfob")
+
+[node name="ButtonRight" type="TouchScreenButton" parent="."]
+z_index = 1
+position = Vector2(234, 493)
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_7dfob")
+
+[node name="ButtonJump" type="TouchScreenButton" parent="."]
+z_index = 1
+position = Vector2(773, 499)
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_7dfob")
+
+[node name="ButtonFire" type="TouchScreenButton" parent="."]
+z_index = 1
+position = Vector2(963, 504)
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_7dfob")
+
+[connection signal="pressed" from="ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="released" from="ButtonLeft" to="." method="_on_button_left_released"]
+[connection signal="pressed" from="ButtonRight" to="." method="_on_button_right_pressed"]
+[connection signal="released" from="ButtonRight" to="." method="_on_button_right_released"]
+[connection signal="pressed" from="ButtonJump" to="." method="_on_button_jump_pressed"]
+[connection signal="pressed" from="ButtonFire" to="." method="_on_button_fire_pressed"]

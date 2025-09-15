@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://gfdi7kxj40k"]
+
+[ext_resource type="Texture2D" uid="uid://dm4jj3ikyu6wf" path="res://assets/collectibles/Collectable2Wrench_v1.0_spritesheet.png" id="1_cx6bv"]
+[ext_resource type="Script" uid="uid://cobltmwju83jb" path="res://scripts/wrenchblue.gd" id="2_1yv3p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u58aa"]
+atlas = ExtResource("1_cx6bv")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4hlm"]
+atlas = ExtResource("1_cx6bv")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm6vi"]
+atlas = ExtResource("1_cx6bv")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8sx0"]
+atlas = ExtResource("1_cx6bv")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3oxy"]
+atlas = ExtResource("1_cx6bv")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqb1e"]
+atlas = ExtResource("1_cx6bv")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk6fe"]
+atlas = ExtResource("1_cx6bv")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvb0g"]
+atlas = ExtResource("1_cx6bv")
+region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0r53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u58aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4hlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm6vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8sx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3oxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqb1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk6fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvb0g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64x2q"]
+size = Vector2(16, 16)
+
+[node name="wrench_blue" type="AnimatedSprite2D" groups=["collectibles"]]
+sprite_frames = SubResource("SpriteFrames_p0r53")
+autoplay = "default"
+frame = 2
+frame_progress = 0.0545096
+script = ExtResource("2_1yv3p")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_64x2q")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

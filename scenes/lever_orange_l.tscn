@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cstlchghihe1f"]
+
+[ext_resource type="Texture2D" uid="uid://b8wrf134onx1m" path="res://assets/items/LeverSwitch1_v1.0_spritesheet.png" id="1_lws1j"]
+[ext_resource type="Script" uid="uid://bflb54walp55g" path="res://scripts/lever_orange_l.gd" id="2_t861i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ka05"]
+atlas = ExtResource("1_lws1j")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytvt5"]
+atlas = ExtResource("1_lws1j")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x5q6"]
+atlas = ExtResource("1_lws1j")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tomg5"]
+atlas = ExtResource("1_lws1j")
+region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a70mm"]
+atlas = ExtResource("1_lws1j")
+region = Rect2(128, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc4vi"]
+atlas = ExtResource("1_lws1j")
+region = Rect2(160, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gc70t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ka05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytvt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x5q6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tomg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a70mm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc4vi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jqef"]
+size = Vector2(28, 27)
+
+[node name="LeverOrangeL" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_gc70t")
+script = ExtResource("2_t861i")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_8jqef")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

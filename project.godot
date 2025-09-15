@@ -11,8 +11,19 @@ config_version=5
 [application]
 
 config/name="CogBots Adventures"
+run/main_scene="uid://dga1kkffmei4e"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SignalManager="*res://singletons/SignalManager.gd"
+GameManager="*res://singletons/GameManager.gd"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [rendering]
 

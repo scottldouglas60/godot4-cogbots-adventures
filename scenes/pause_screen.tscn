@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnc8x8vmytmgx"]
+
+[ext_resource type="Script" uid="uid://bh5oc468ukbme" path="res://scripts/pause_screen.gd" id="1_6th52"]
+[ext_resource type="Texture2D" uid="uid://b3f0dpnga7xff" path="res://assets/backgrounds/3_Industrial_Tileset_1_FarBackground.png" id="1_inmdi"]
+
+[node name="PauseScreen" type="Node2D"]
+script = ExtResource("1_6th52")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_right = 1366.0
+offset_bottom = 957.0
+size_flags_horizontal = 6
+mouse_filter = 0
+texture = ExtResource("1_inmdi")
+
+[node name="ButtonExit" type="Button" parent="."]
+offset_left = 542.0
+offset_top = 161.0
+offset_right = 668.0
+offset_bottom = 232.0
+text = "Exit"
+
+[node name="ButtonReturn" type="Button" parent="."]
+offset_left = 545.0
+offset_top = 309.0
+offset_right = 672.0
+offset_bottom = 387.0
+text = "Resume
+"
+
+[connection signal="pressed" from="ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="pressed" from="ButtonReturn" to="." method="_on_button_return_pressed"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7pfq6cescts5"]
+
+[ext_resource type="Texture2D" uid="uid://dxi54hgfm2uux" path="res://assets/vehicles/Vehicle2_Blue_v1.0_spritesheet.png" id="1_31k8a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eesto"]
+atlas = ExtResource("1_31k8a")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2w7x"]
+atlas = ExtResource("1_31k8a")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs1cw"]
+atlas = ExtResource("1_31k8a")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcfwq"]
+atlas = ExtResource("1_31k8a")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsxbe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eesto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2w7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs1cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcfwq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2d2i"]
+size = Vector2(62, 45)
+
+[node name="vehicle2Blue" type="AnimatedSprite2D"]
+position = Vector2(-592, -200)
+sprite_frames = SubResource("SpriteFrames_nsxbe")
+frame = 3
+frame_progress = 0.00498958
+offset = Vector2(564, 166)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(627, 174)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-63, 1.5)
+shape = SubResource("RectangleShape2D_c2d2i")

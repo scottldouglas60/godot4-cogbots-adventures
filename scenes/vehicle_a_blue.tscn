@@ -1,0 +1,109 @@
+[gd_scene load_steps=16 format=3 uid="uid://c1vdfi4naony1"]
+
+[ext_resource type="Texture2D" uid="uid://cs81txqvg5ik6" path="res://assets/vehicles/Vehicle1_A_Blue_v1.0_spritesheet.png" id="1_v6mnx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vset"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7m06"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddlia"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sng4v"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn54r"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uds1y"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eql7e"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc36a"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw56o"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aejyc"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llhbf"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy2q8"]
+atlas = ExtResource("1_v6mnx")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wv4xk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vset")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7m06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddlia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sng4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn54r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uds1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eql7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc36a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw56o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aejyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llhbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy2q8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bmpv"]
+size = Vector2(32, 14)
+
+[node name="vehicleABlue" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_wv4xk")
+frame = 6
+frame_progress = 0.808469
+
+[node name="Sprite2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_1bmpv")
