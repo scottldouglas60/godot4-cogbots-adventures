@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://tuw8xka5cqrx"]
+
+[ext_resource type="Texture2D" uid="uid://q0k3oxam5raq" path="res://assets/backgrounds/BlackBG.png" id="1_6d7b6"]
+[ext_resource type="Script" uid="uid://dxkb6xf5sxn0h" path="res://scripts/score.gd" id="1_an2ns"]
+[ext_resource type="Texture2D" uid="uid://bume2idcebeql" path="res://assets/fonts/BACK.png" id="2_vbrcl"]
+
+[node name="Score_Scene" type="Node2D"]
+script = ExtResource("1_an2ns")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 640.0
+texture = ExtResource("1_6d7b6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 520.0
+offset_top = 272.0
+offset_right = 625.0
+offset_bottom = 295.0
+text = "SCORE SCENE"
+
+[node name="BackButton" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 448.0
+offset_right = 903.0
+offset_bottom = 536.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.400915, 0.400915)
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_vbrcl")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_texture_button_pressed"]

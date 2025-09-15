@@ -1,0 +1,177 @@
+[gd_scene load_steps=22 format=3 uid="uid://br0muucohsu0c"]
+
+[ext_resource type="Script" uid="uid://rhxfqejdjtbn" path="res://scripts/player_intro.gd" id="1_16im8"]
+[ext_resource type="Texture2D" uid="uid://b5uql580pcmvy" path="res://assets/player/robot_sprite_sheet.png" id="2_uh3ci"]
+[ext_resource type="PackedScene" uid="uid://bwi5ujm1jacqd" path="res://scenes/player_cam.tscn" id="3_qry7a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s52et"]
+radius = 11.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_6bw7r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7vl2u"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_3g2hj"]
+resource_name = "jump"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_xwtdx"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o0mcb"]
+_data = {
+&"RESET": SubResource("Animation_6bw7r"),
+&"idle": SubResource("Animation_7vl2u"),
+&"jump": SubResource("Animation_3g2hj"),
+&"walk": SubResource("Animation_xwtdx")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jptab"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_et4dg"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7i204"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lqg78"]
+advance_mode = 2
+advance_expression = "int(velocity.x) != 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fyvnr"]
+advance_mode = 2
+advance_expression = "int(velocity.x) == 0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dd6m5"]
+states/idle/node = SubResource("AnimationNodeAnimation_jptab")
+states/idle/position = Vector2(346, 100)
+states/walk/node = SubResource("AnimationNodeAnimation_et4dg")
+states/walk/position = Vector2(561, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_7i204"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lqg78"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_fyvnr")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ub30i"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ehg6h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xtxg1"]
+advance_mode = 2
+advance_expression = "!is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o15y0"]
+advance_mode = 2
+advance_expression = "is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0w7rm"]
+states/Grounded/node = SubResource("AnimationNodeStateMachine_dd6m5")
+states/Grounded/position = Vector2(356, 100)
+states/jump/node = SubResource("AnimationNodeAnimation_ub30i")
+states/jump/position = Vector2(529, 100)
+transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_ehg6h"), "Grounded", "jump", SubResource("AnimationNodeStateMachineTransition_xtxg1"), "jump", "Grounded", SubResource("AnimationNodeStateMachineTransition_o15y0")]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wgmf3"]
+radius = 11.0
+
+[node name="Player_Intro" type="CharacterBody2D"]
+collision_mask = 18
+script = ExtResource("1_16im8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uh3ci")
+hframes = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_s52et")
+
+[node name="PlayerCam" parent="." instance=ExtResource("3_qry7a")]
+zoom = Vector2(1, 1)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 1376
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o0mcb")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_0w7rm")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+visible = false
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_wgmf3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

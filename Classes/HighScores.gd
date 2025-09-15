@@ -26,10 +26,10 @@ func get_scores_list():
 	return high_scores
 
 
-func add_new_score(score: int):
-	var new_high_score = HighScore.new(score, 
-									FoxyUtils.formatted_dt())
-	high_scores.append(new_high_score)
-	sort_scores()
-	if high_scores.size() > MAX_SCORES:
-		high_scores.resize(MAX_SCORES)
+#func add_new_score(score: int):
+	#var new_high_score = HighScore.new(score, 
+	##FoxyUtils.formatted_dt())
+	#high_scores.append(new_high_score)
+	#sort_scores()
+	#if high_scores.size() > MAX_SCORES:
+		#high_scores.resize(MAX_SCORES)
