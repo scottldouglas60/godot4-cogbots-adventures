@@ -15,3 +15,4 @@ func _process(delta):
 	
 func _on_area_entered(_area):
 	queue_free()
+	

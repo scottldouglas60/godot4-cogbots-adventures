@@ -44,6 +44,7 @@ var patrol_direction = Vector2.RIGHT
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Drone Ready")
 	col_idle.disabled = false
 	col_jump.hide()
 	col_idle.show()
@@ -74,6 +75,9 @@ func _physics_process(delta):
 		
 	label_patrol_timer.text = str(patrol_timer.time_left)	
 	
+	if is_on_floor() and GameManager.droneLanded == false:
+		GameManager.droneLanded = true
+		SignalManager.on_drone_landed.emit()
 	
 	move_and_slide()
 
@@ -94,6 +98,7 @@ func _on_animation_player_animation_finished(anim_name):
 		drone_state = DroneState.ROLL	
 		state_label.text = STATE_NAMES.get(drone_state, "UNKNOWN")	
 		
+
 	if target.global_position > global_position:
 		anim.play("roll_r")
 		

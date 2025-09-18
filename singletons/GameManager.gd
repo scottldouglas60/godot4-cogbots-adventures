@@ -1,4 +1,5 @@
 #GameManager.gd
+# Singleton - Loaded at runtime like a global and persistant
 
 extends Node
 
@@ -8,12 +9,11 @@ const SCORE = preload("res://scenes/score_scene.tscn")
 const SETTINGS = preload("res://scenes/settings_scene.tscn")
 const LEVEL_1 = preload("res://scenes/level_1.tscn")
 
+
 const STOP = 0
 const RIGHT = 1
 const LEFT = 2
 const SCROLL_SPEED = 100
-
-
 
 # Levers and doors variables
 @onready var leverBlueL: bool = false
@@ -23,6 +23,8 @@ const SCROLL_SPEED = 100
 @onready var playerDirection = STOP
 @onready var playerJump = 0
 
+#Drone variables
+@onready var droneLanded: bool = false
 
 
 # Game variables
@@ -59,6 +61,7 @@ func _ready():
 	print("Game manager ready")
 	#Needs call deferred to allow for all the singletons to completely load
 	#get_tree().call_deferred("change_scene_to_packed", INTRO)
+	#await get_tree().create_timer(2.5).timeout
 	#get_tree().change_scene_to_packed(INTRO)
 
 func _exit_tree():

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CogBots Adventures"
-run/main_scene="uid://dga1kkffmei4e"
+run/main_scene="uid://db614s072a8kb"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 

@@ -27,8 +27,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # can probably remove as all functions are passed via sgnals from
 # player then HUD
-func _process(delta):
-	pass
+#func _process(delta):
+	#pass
 
 		
 func spawn_bullet():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=4 uid="uid://pl0xvqdkjw0c"]
+[gd_scene load_steps=23 format=4 uid="uid://pl0xvqdkjw0c"]
 
 [ext_resource type="PackedScene" uid="uid://l607a5101g5e" path="res://scenes/hud.tscn" id="1_ioetj"]
 [ext_resource type="Texture2D" uid="uid://bkla6qpcs5lxw" path="res://assets/tileset/1_Industrial_Tileset_1B.png" id="1_ka2n6"]
+[ext_resource type="Script" uid="uid://cc1nvl24ulplf" path="res://scripts/level_base.gd" id="1_ngfo8"]
 [ext_resource type="Texture2D" uid="uid://kobc5tc7c4ok" path="res://assets/backgrounds/2_Industrial_Tileset_1B_Background.png" id="2_7hfts"]
 [ext_resource type="PackedScene" uid="uid://clncf8m1jqfgc" path="res://scenes/player.tscn" id="3_4n8dm"]
 [ext_resource type="Texture2D" uid="uid://c75shoh58re13" path="res://assets/backgrounds/1_Industrial_Tileset_2B.png" id="3_oi5ap"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dwxsbe2aih1fu" path="res://assets/backgrounds/1_Industrial_Tileset_3B.png" id="5_pldrc"]
 [ext_resource type="Texture2D" uid="uid://copcwt4fngid" path="res://assets/backgrounds/2_Industrial_Tileset_3B_Background.png" id="6_y6ke7"]
 [ext_resource type="Texture2D" uid="uid://ci3neygc363gg" path="res://assets/backgrounds/3_Far_Background_Tile.png" id="7_gviht"]
+[ext_resource type="PackedScene" uid="uid://c2vs7b6cevjoq" path="res://scenes/bullet.tscn" id="8_rth7s"]
 [ext_resource type="PackedScene" uid="uid://bbaxu3heh8tda" path="res://scenes/settings.tscn" id="12_air2w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o3dtq"]
@@ -270,6 +272,8 @@ sources/6 = SubResource("TileSetAtlasSource_bjkou")
 sources/7 = SubResource("TileSetAtlasSource_un8re")
 
 [node name="LevelBase" type="Node2D"]
+script = ExtResource("1_ngfo8")
+bullet_scene = ExtResource("8_rth7s")
 
 [node name="TileMapLayer" type="Node2D" parent="."]
 
@@ -277,7 +281,9 @@ sources/7 = SubResource("TileSetAtlasSource_un8re")
 tile_map_data = PackedByteArray("AAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAARAAcAAAAAAAAAAAAQAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_2pb4v")
 
-[node name="ObjectMaker" type="Node2D" parent="."]
+[node name="Bullet" type="Node2D" parent="."]
+
+[node name="Bullet" parent="Bullet" instance=ExtResource("8_rth7s")]
 
 [node name="Enemies" type="Node2D" parent="."]
 
