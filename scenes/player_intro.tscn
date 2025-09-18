@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://br0muucohsu0c"]
 
-[ext_resource type="Script" uid="uid://rhxfqejdjtbn" path="res://scripts/player_intro.gd" id="1_16im8"]
+[ext_resource type="Script" uid="uid://c87cufitqwvt4" path="res://scripts/player_intro.gd" id="1_16im8"]
 [ext_resource type="Texture2D" uid="uid://b5uql580pcmvy" path="res://assets/player/robot_sprite_sheet.png" id="2_uh3ci"]
 [ext_resource type="PackedScene" uid="uid://bwi5ujm1jacqd" path="res://scenes/player_cam.tscn" id="3_qry7a"]
 
@@ -153,7 +153,7 @@ limit_bottom = 1376
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_o0mcb")
+&"": SubResource("AnimationLibrary_o0mcb")
 }
 autoplay = "idle"
 

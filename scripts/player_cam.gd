@@ -12,7 +12,12 @@ func _ready():
 	set_process(false)
 	SignalManager.on_player_hit.connect(on_player_hit)
 	SignalManager.on_game_over.connect(on_game_over)
+	SignalManager.on_drone_landed.connect(on_drone_landed)
 
+func on_drone_landed():
+	set_process(true) # starts the _process(delta
+	shake_timer.start()
+	
 func on_player_hit(_lives: int):
 	set_process(true)
 	shake_timer.start()	

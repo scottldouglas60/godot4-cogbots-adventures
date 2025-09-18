@@ -2,12 +2,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#SignalManager.on_test.connect(test)
 	print("Hud Ready")
-
-
-func test():
-	print("signal test connected")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

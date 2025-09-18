@@ -39,12 +39,14 @@ func on_score_updated():
 
 func _on_button_left_pressed():
 	GameManager.playerDirection = GameManager.LEFT
+	print("Left")
 
 func _on_button_left_released():
 	GameManager.playerDirection = GameManager.STOP
 
 func _on_button_right_pressed():
 	GameManager.playerDirection = GameManager.RIGHT
+	print("Right")
 	 
 func _on_button_right_released():
 	GameManager.playerDirection = GameManager.STOP
@@ -52,7 +54,7 @@ func _on_button_right_released():
 func _on_button_jump_pressed():
 	if GameManager.gameOver == false:
 		GameManager.playerJump = 1
-	
+		print("Jump")
 	if GameManager.gameOver == true:
 		get_tree().quit()
 		print("Pressed hud fire")
@@ -61,6 +63,7 @@ func _on_button_jump_pressed():
 func _on_button_fire_pressed():
 	
 	if GameManager.gameOver == false:
+		print("fire")
 		SignalManager.on_player_shoot.emit()
 	
 	if GameManager.gameOver == true:

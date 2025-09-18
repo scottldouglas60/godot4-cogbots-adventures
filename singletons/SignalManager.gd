@@ -9,6 +9,7 @@ signal on_player_jump
 signal on_lever_blue_l
 signal on_score_updated
 signal on_game_over
+signal on_drone_landed
 
 
 #signal on_create_bullet(

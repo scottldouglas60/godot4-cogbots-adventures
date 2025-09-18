@@ -23,14 +23,15 @@ var lives : int = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-	#SignalManager.on_drone_landed.connect(drone_landed)
+	SignalManager.on_drone_landed.connect(drone_landed)
+	print("Player Ready")
 
 func drone_landed():
 	print(" player_intro_received drone_landed signal")
 	intro_move()
 
 func intro_move():
+	print("intro move")
 	pass
 	# Move left unill seen
 	#GameManager.playerDirection = GameManager.LEFT
